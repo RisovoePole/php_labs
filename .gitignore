@@ -1,0 +1,35 @@
+# Системные файлы и файлы ОС
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Папки сборки и кэши
+build/
+dist/
+out/
+.sass-cache/
+.eslintcache
+
+# Зависимости
+node_modules/
+/vendor/
+
+# Логи и временные файлы
+*.log
+*.tmp
+*.temp
+
+# Файлы окружения и секреты (не коммитить!)
+.env
+.env.local
+.env.*.local
+
+# Настройки IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
