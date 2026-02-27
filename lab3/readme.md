@@ -15,7 +15,7 @@
 Работает по дням недели **Вт, Чт, Сб** с *12 часов утра до 16 часов дня*
 
 Реализация через отдельные переменные под начало и конец времени:
-`$Name_work_schedule_start` и `$Name_work_schedule_end` соответственно.
+`$nameWorkScheduleStart` и `$nameWorkScheduleEnd` соответственно.
 
 Определения текущего дня недели выполненно через функцию `date("l")`, которая возвращает строку с названием текущего дня недели.
 
@@ -23,33 +23,74 @@
 
 ``` php
 <?php 
-    $current_day_of_week = date("l");#"Friday"  |  "Monday"
+    <?php 
+    $currentDayOfWeek = date("l");#"Friday"  |  "Monday"
 
     $weekends = "Нерабочий день";
 
 
-    $John_work_schedule_start = new DateTime('8:00:00');
-    $John_work_schedule_end = new DateTime('12:00:00');
-    $John_work_schedule = 
-        $John_work_schedule_start->format('H:i:s') .
+    $johnWorkScheduleStart = new DateTime('8:00:00');
+    $johnWorkScheduleEnd = new DateTime('12:00:00');
+    $johnWorkSchedule = 
+        $johnWorkScheduleStart->format('H:i:s') .
         " - " .
-        $John_work_schedule_end->format('H:i:s');
+        $johnWorkScheduleEnd->format('H:i:s');
 
-    $Jane_work_schedule_start = new DateTime('12:00:00');
-    $Jane_work_schedule_end = new DateTime('16:00:00');
-    $Jane_work_schedule = 
-            $Jane_work_schedule_start->format('H:i:s') .
+    $janeWorkScheduleStart = new DateTime('12:00:00');
+    $janeWorkScheduleEnd = new DateTime('16:00:00');
+    $janeWorkSchedule = 
+            $janeWorkScheduleStart->format('H:i:s') .
             " - " .
-            $Jane_work_schedule_end->format('H:i:s');
+            $janeWorkScheduleEnd->format('H:i:s');
             
 ?>
+
+
+
+
+
+
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <style>
-    # some CSS styles for STYLE
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;   /* по горизонтали */
+      align-items: center;       /* по вертикали */
+      background: #878484ff;
+      font-family: system-ui, sans-serif;
+    }
+
+    table {
+      border-collapse: collapse;
+      min-width: 260px;
+      background: #ffffff;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    th, td {
+      padding: 10px 16px;
+      border-bottom: 1px solid #eeeeee;
+      text-align: left;
+      font-size: 14px;
+      color: #333333;
+    }
+
+    th {
+      font-weight: 600;
+      background: #fafafa;
+    }
+
+    tr:last-child td {
+      border-bottom: none;
+    }
   </style>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -77,8 +118,8 @@
                 John Styles
             </td>
             <td>
-                <?= match( $current_day_of_week ) {
-                    "Monday", "Wednesday", "Friday" => $John_work_schedule,
+                <?= match( $currentDayOfWeek ) {
+                    "Monday", "Wednesday", "Friday" => $johnWorkSchedule,
                     default => $weekends
                 };
                 ?>
@@ -93,8 +134,8 @@
                 Jane Doe
             </td>
             <td>
-                <?= match( $current_day_of_week ) {
-                    "Tuesday", "Thursday", "Saturday" => $Jane_work_schedule,
+                <?= match( $currentDayOfWeek ) {
+                    "Tuesday", "Thursday", "Saturday" => $janeWorkSchedule,
                     default => $weekends
                 }; 
                 ?>
