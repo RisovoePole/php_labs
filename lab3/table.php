@@ -1,22 +1,22 @@
 <?php 
-    $current_day_of_week = date("l");#"Friday"  |  "Monday"
+    $currentDayOfWeek = date("l");#"Friday"  |  "Monday"
 
     $weekends = "Нерабочий день";
 
 
-    $John_work_schedule_start = new DateTime('8:00:00');
-    $John_work_schedule_end = new DateTime('12:00:00');
-    $John_work_schedule = 
-        $John_work_schedule_start->format('H:i:s') .
+    $johnWorkScheduleStart = new DateTime('8:00:00');
+    $johnWorkScheduleEnd = new DateTime('12:00:00');
+    $johnWorkSchedule = 
+        $johnWorkScheduleStart->format('H:i:s') .
         " - " .
-        $John_work_schedule_end->format('H:i:s');
+        $johnWorkScheduleEnd->format('H:i:s');
 
-    $Jane_work_schedule_start = new DateTime('12:00:00');
-    $Jane_work_schedule_end = new DateTime('16:00:00');
-    $Jane_work_schedule = 
-            $Jane_work_schedule_start->format('H:i:s') .
+    $janeWorkScheduleStart = new DateTime('12:00:00');
+    $janeWorkScheduleEnd = new DateTime('16:00:00');
+    $janeWorkSchedule = 
+            $janeWorkScheduleStart->format('H:i:s') .
             " - " .
-            $Jane_work_schedule_end->format('H:i:s');
+            $janeWorkScheduleEnd->format('H:i:s');
             
 ?>
 
@@ -93,8 +93,8 @@
                 John Styles
             </td>
             <td>
-                <?= match( $current_day_of_week ) {
-                    "Monday", "Wednesday", "Friday" => $John_work_schedule,
+                <?= match( $currentDayOfWeek ) {
+                    "Monday", "Wednesday", "Friday" => $johnWorkSchedule,
                     default => $weekends
                 };
                 ?>
@@ -109,8 +109,8 @@
                 Jane Doe
             </td>
             <td>
-                <?= match( $current_day_of_week ) {
-                    "Tuesday", "Thursday", "Saturday" => $Jane_work_schedule,
+                <?= match( $currentDayOfWeek ) {
+                    "Tuesday", "Thursday", "Saturday" => $janeWorkSchedule,
                     default => $weekends
                 }; 
                 ?>
