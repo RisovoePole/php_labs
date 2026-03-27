@@ -65,7 +65,7 @@
     ],
     [
         "id" => 10,
-        "date" => new DateTime("2024-10-07"),
+        "date" => new DateTime("2026-03-07"),
         "amount" => 540.00,
         "description" => "Laptop repair",
         "merchant" => "ServiceCenter",
