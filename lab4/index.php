@@ -5,8 +5,8 @@ declare(strict_types=1);
 include __DIR__ . '/transactions.php';
 require __DIR__ . '/functions.php';
 
-$transactions = sortByDate($transactions);
-$transactions = sortByAmount($transactions);
+//$transactions = sortByDate($transactions, false);
+$transactions = sortByAmount($transactions, false);
 ?>
 
 <!DOCTYPE html>

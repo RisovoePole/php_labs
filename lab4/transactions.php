@@ -58,7 +58,7 @@
     ],
     [
         "id" => 9,
-        "date" => new DateTime("2023-09-19"),
+        "date" => new DateTime("2022-09-19"),
         "amount" => 12.49,
         "description" => "Coffee and snacks",
         "merchant" => "CoffeeCorner",

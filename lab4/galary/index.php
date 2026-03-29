@@ -1,5 +1,11 @@
 <?php
 
+/**
+ * Выводит список div-ов с классом `photo-card` Для всех элементов из папки images. 
+ *
+ * @param string $dir - путь до папки, из которой будут взяты файлы (например "path/to/images/").
+ * @return string HTML разметка.
+ */
 function printImages(string $dir = "images/"): string
 {
     $files = scandir($dir);
@@ -7,7 +13,7 @@ function printImages(string $dir = "images/"): string
         return "<h2>ERROR 500</h2><br>Directory not found.";
     }
 
-    $result = "";
+    $result = "<div class=\"photo-grid\">";
 
     for ($i = 0; $i < count($files); $i++) {
         if (($files[$i] != ".") && ($files[$i] != "..")) {
@@ -17,6 +23,8 @@ function printImages(string $dir = "images/"): string
             $result .= "</div>\n";
         }
     }
+
+    $result.="</div>";
     return $result;
 }
 
@@ -110,9 +118,7 @@ function printImages(string $dir = "images/"): string
     </header>
 
     <main>
-        <div class="photo-grid">
         <?= printImages() ?>    
-    </div>
     </main>
 
     <footer>
