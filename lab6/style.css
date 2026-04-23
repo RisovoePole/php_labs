@@ -1,0 +1,158 @@
+/* 1. Переменные и базовые настройки */
+:root {
+    --bg: #f9f9f9;
+    --card: #ffffff;
+    --text: #333;
+    --accent: #4a90e2;
+    --accent-hover: #357abd;
+    --border: #ececec;
+    --gray: #888;
+    --success: #27ae60;
+    --danger: #eb5757;
+    --font-main: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-main);
+    background-color: var(--bg);
+    color: var(--text);
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* 2. Типографика и ссылки */
+h1, h2, h3 {
+    color: var(--text);
+    margin-top: 0;
+}
+
+a {
+    color: var(--accent);
+    text-decoration: none;
+    transition: 0.2s;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* 3. Кнопки и формы */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--accent);
+    color: white !important;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.btn:hover {
+    background: var(--accent-hover);
+}
+
+.form-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    color: var(--gray);
+    font-weight: 600;
+}
+
+input, select, textarea {
+    padding: 12px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    outline: none;
+    font-family: inherit;
+    font-size: 14px;
+    background: #fff;
+}
+
+input:focus, textarea:focus {
+    border-color: var(--accent);
+}
+
+input:disabled {
+    background: #f1f1f1;
+    cursor: not-allowed;
+}
+
+/* 4. Лейаут (Сетка) */
+header {
+    width: 100%;
+    padding: 15px 20px;
+    background: var(--card);
+    border-bottom: 1px solid var(--border);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 30px;
+    max-width: 1200px;
+    width: 100%;
+    padding: 40px 20px;
+    margin: 0 auto;
+}
+
+/* 5. Компоненты (Карточки, Теги, Рейтинг) */
+.sidebar, .card, .post-card {
+    background: var(--card);
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid var(--border);
+    height: fit-content;
+}
+
+.tag {
+    display: inline-block;
+    background: #f0f4f8;
+    color: #546b82;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    margin-right: 8px;
+    margin-bottom: 8px;
+}
+
+.post-meta {
+    font-size: 13px;
+    color: var(--gray);
+    margin-bottom: 10px;
+}
+
+.rating {
+    display: flex;
+    gap: 20px;
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.up { color: var(--success); }
+.down { color: var(--danger); }
+
+/* 6. Утилиты */
+.text-center { text-align: center; }
+.mt-20 { margin-top: 20px; }
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
