@@ -1,0 +1,47 @@
+{% extends "base.html.twig" %}
+
+{% block title %}Список рецептов - Рецепты{% endblock %}
+
+{% block content %}
+<h2>Все сохранённые рецепты</h2>
+
+{% if recipes is empty %}
+    <p style="color: #666; font-style: italic;">Рецептов не найдено. <a href="index-twig.php?page=form">Добавьте первый рецепт</a></p>
+{% else %}
+    <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+        <thead>
+            <tr style="background: #f0f0f0;">
+                <th style="text-align: left; padding: 10px; border: 1px solid #ddd;">
+                    <a href="index-twig.php?page=list&sort=title&order={% if sort == 'title' and order == 'asc' %}desc{% else %}asc{% endif %}">
+                        Название {% if sort == 'title' %}{{ order == 'asc' ? '↑' : '↓' }}{% endif %}
+                    </a>
+                </th>
+                <th style="text-align: left; padding: 10px; border: 1px solid #ddd;">
+                    <a href="index-twig.php?page=list&sort=category&order={% if sort == 'category' and order == 'asc' %}desc{% else %}asc{% endif %}">
+                        Категория {% if sort == 'category' %}{{ order == 'asc' ? '↑' : '↓' }}{% endif %}
+                    </a>
+                </th>
+                <th style="text-align: left; padding: 10px; border: 1px solid #ddd;">
+                    <a href="index-twig.php?page=list&sort=date&order={% if sort == 'date' and order == 'asc' %}desc{% else %}asc{% endif %}">
+                        Дата {% if sort == 'date' %}{{ order == 'asc' ? '↑' : '↓' }}{% endif %}
+                    </a>
+                </th>
+                <th style="text-align: left; padding: 10px; border: 1px solid #ddd;">Ингредиенты</th>
+                <th style="text-align: left; padding: 10px; border: 1px solid #ddd;">Инструкция</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for recipe in recipes %}
+                <tr style="border-bottom: 1px solid #ddd;">
+                    <td style="padding: 10px; border: 1px solid #ddd;"><strong>{{ recipe.title }}</strong></td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ recipe.category | recipe_category_icon }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd;">{{ recipe.date }}</td>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-size: 0.9em;"><pre style="margin: 0; white-space: pre-wrap;">{{ recipe.ingredients }}</pre></td>
+                    <td style="padding: 10px; border: 1px solid #ddd; font-size: 0.9em;"><pre style="margin: 0; white-space: pre-wrap;">{{ recipe.instructions }}</pre></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <p style="margin-top: 15px; color: #666;">Всего записей: <strong>{{ recipes|length }}</strong></p>
+{% endif %}
+{% endblock %}
